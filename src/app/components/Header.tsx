@@ -1,7 +1,11 @@
 import React from "react";
 import Icons from "./Icons";
 
-const Header = () => {
+interface HeaderProps {
+  setIsUploadOpened: (isOpen: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ setIsUploadOpened }) => {
   return (
     <div className="wrapper flex justify-between items-center py-4 box-shadow-1 bg-[#f5f8ff]">
       <div className="w-2/3 border-2 rounded-full border-gray-200 flex items-center">
@@ -18,7 +22,10 @@ const Header = () => {
       </div>
 
       <div className="w-1/3 flex justify-end">
-        <button className="btn-primary transition rounded-lg">
+        <button
+          onClick={() => setIsUploadOpened(true)}
+          className="btn-primary transition rounded-lg"
+        >
           {Icons.upload} Upload Image
         </button>
       </div>
